@@ -15,8 +15,3 @@ It repeatedly transforms the number: if even, divides by 2; if odd, multiplies b
 ```bash
 python collatz.py
 ```
-
-## Next Improvements
-- Add command-line argument support (e.g., python collatz.py 6)
-- Log the sequence to a file
-- Visualize the sequence length or values using a simple plot
