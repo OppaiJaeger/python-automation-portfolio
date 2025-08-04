@@ -1,76 +1,78 @@
-"""Simple Calculator: supports +, -, *, / with input validation and rounding."""
+"""Simple Calculator: modular implementation with validation and logging."""
 
 import datetime
-import os, sys
+import os
 
 LOGFILE = "history.txt"
+OPERATORS = ["+", "-", "*", "/"]
+
+def get_number(prompt):
+    """Prompt until a valid float is entered and return it."""
+    while True:
+        try:
+            return float(input(prompt).strip())
+        except ValueError:
+            print("Invalid number. Please try again.")
+
+def get_operator():
+    """Prompt until a valid operator is entered and return it."""
+    while True:
+        op = input("Enter operation (+, -, *, /): ").strip()
+        if op in OPERATORS:
+            return op
+        print("Invalid operator. Choose one of +, -, *, /.")
+
+def perform_calculation(a, b, operator):
+    """Perform the arithmetic and handle division by zero."""
+    if operator == "+":
+        return a + b
+    if operator == "-":
+        return a - b
+    if operator == "*":
+        return a * b
+    if operator == "/":
+        if b == 0:
+            print("Error: Division by zero.")
+            return None
+        return round(a / b, 4)
 
 def log_calculation(a, b, operator, result):
-    """Append a successful calculation to history.txt with timestamp."""
-    # Ensure logfile has header if newly created (optional)
+    """Append a successful calculation to the log file."""
     is_new = not os.path.exists(LOGFILE) or os.path.getsize(LOGFILE) == 0
     timestamp = datetime.datetime.now().isoformat(timespec="seconds")
-    line = f"{timestamp} | {a} {operator} {b} = {result}\n"
     with open(LOGFILE, "a") as f:
         if is_new:
             f.write("# Simple Calculator History Log\n")
-        f.write(line)
-result = 0
-again = 'y'
+        f.write(f"{timestamp} | {a} {operator} {b} = {result}\n")
 
-print("Welcome to the Simple Calculator!")
+def ask_continue():
+    """Ask whether to continue; return True to continue."""
+    while True:
+        answer = input("Do another calculation? (y/n): ").strip().lower()
+        if answer.startswith("y"):
+            return True
+        if answer.startswith("n"):
+            return False
+        print("Please answer y or n.")
 
-while again == 'y':
-    # Get first number with validation
-    try:
-        num1 = float(input("\nEnter the first number: "))
-    except ValueError:
-        print("\nInvalid input. Please enter a number.")
-        continue
+def main():
+    print("Welcome to the Simple Calculator!")
+    while True:
+        num1 = get_number("Enter the first number: ")
+        operator = get_operator()
+        num2 = get_number("Enter the second number: ")
 
-    # Get second number with validation
-    try:
-        num2 = float(input("\nEnter the second number: "))
-    except ValueError:
-        print("\nInvalid input. Please enter a number.")
-        continue
+        result = perform_calculation(num1, num2, operator)
+        if result is None:
+            continue  # e.g., division by zero
+        print(f"The result of {num1} {operator} {num2} is: {result}")
 
-    # Get operator
-    operator = input("\nEnter the operation (+, -, *, /): ").strip()
-    if operator not in ["+", "-", "*", "/"]:
-        print("\nInvalid operator. Please enter one of +, -, *, /.")
-        continue
+        log_calculation(num1, num2, operator, result)
+        print("Logged calculation.")
 
-    # Perform calculation with clear handling
-    if operator == "+":
-        result = num1 + num2
-    elif operator == "-":
-        result = num1 - num2
-    elif operator == "*":
-        result = num1 * num2
-    elif operator == "/":
-        if num2 == 0:
-            print("\nError: Division by zero is not allowed.")
-            continue
-        result = round(num1 / num2, 4)
+        if not ask_continue():
+            print("Goodbye!")
+            break
 
-    print(f"\nThe result of {num1} {operator} {num2} is: {result}")
-
-    # Only log if result is numeric (i.e., not an error message)
-    try:
-        # convert to float to be safe; if result is not numeric this will fail
-        numeric_result = float(result)
-        log_calculation(num1, num2, operator, numeric_result)
-        print("\nLogged calculation.")
-    except (ValueError, TypeError):
-        # skip logging non-numeric errors
-        pass
-
-    again = input("\nDo you want to perform another calculation? (y/n): ").strip().lower()
-    if again.startswith('y'):
-        continue  # continue outer calculation loop
-    if again.startswith('n'):
-        print("\nGoodbye!")
-        sys.exit()  # or break out of outer loop if structured that way
-    else:
-        print("Please answer with yes or no (y/n).")
+if __name__ == "__main__":
+    main()
