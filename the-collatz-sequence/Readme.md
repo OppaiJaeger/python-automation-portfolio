@@ -8,8 +8,15 @@ It repeatedly transforms the number: if even, divides by 2; if odd, multiplies b
 - Clear step-by-step sequence output
 - Robust prompting for correct input
 
-## Requirements
-- Python 3.6+
+## File Structure
+
+```text
+
+to-do-list/
+├── collatz.py # Main Python program
+└── README.md # Project documentation
+
+```
 
 ## Usage
 ```bash

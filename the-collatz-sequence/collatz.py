@@ -1,6 +1,5 @@
 """Collatz sequence: repeatedly transform a number until it reaches 1."""
 
-import sys
 
 def collatz(n):
     """Return the next number in the Collatz sequence."""

@@ -40,7 +40,7 @@ def log_calculation(a, b, operator, result):
     """Append a successful calculation to the log file."""
     is_new = not os.path.exists(LOGFILE) or os.path.getsize(LOGFILE) == 0
     timestamp = datetime.datetime.now().isoformat(timespec="seconds")
-    with open(LOGFILE, "a") as f:
+    with open(LOGFILE, "a", encoding="utf8") as f:
         if is_new:
             f.write("# Simple Calculator History Log\n")
         f.write(f"{timestamp} | {a} {operator} {b} = {result}\n")
