@@ -9,6 +9,8 @@ A collection of Python automation scripts and mini-projects built while learning
 
 - **to-do-list** — CLI To-Do List app that can add, view, and delete tasks, and all tasks are persistently saved in a `tasks.txt` file.
 
+- **empire-state-climb** — A program that simulates a random walk to determine the probability of reaching a certain height, based on dice rolls and a small chance of falling.
+
 
 ## Usage
 Clone the repo and run any project:
