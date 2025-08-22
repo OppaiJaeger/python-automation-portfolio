@@ -26,7 +26,6 @@ This project follows a standard content-based filtering pipeline.
 music_recommender_engine/
 ├── music_recommender_analysis.ipynb # Main project notebook
 ├── requirements.txt # Requirements to install
-├── LICENSE.md # MIT licence
 └── README.md # Project documentation
 
 ```
@@ -59,7 +58,3 @@ jupyter notebook music_recommender_analysis.ipynb
 ## Acknowledgements
 
 I would like to thank the provider of the [Spotify Million Song Dataset](https://www.kaggle.com/datasets/notshrirang/spotify-million-song-dataset) on Kaggle. This project would not have been possible without this well-structured and comprehensive dataset.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
