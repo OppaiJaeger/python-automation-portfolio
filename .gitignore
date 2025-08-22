@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 venv/
 *.log
+.ipynb_checkpoints/
+*.csv
