@@ -27,3 +27,6 @@ cd python-automation-portfolio/project-folder
 
 python filename.py
 ```
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
