@@ -8,16 +8,16 @@ A data-driven project that builds a simple content-based recommendation system u
 - **Text Preprocessing**: Cleans and prepares raw text data by removing punctuation, stop words, and applying stemming.
 - **TF-IDF Vectorization**: Converts lyrical content into a numerical format for analysis.
 - **Cosine Similarity**: Calculates the similarity between songs to find the most relevant recommendations.
-- **User Interface**: A simple command-line interface to get user input and display recommendations.
+- **Interactive User Interface**: A simple command-line interface is available in both the notebook and the standalone script to get user input and display recommendations.
 
 ## Methodology
 
 This project follows a standard content-based filtering pipeline.
 
-1.  **Data Preprocessing**: Lyrical content is cleaned and standardized using a custom function that removes punctuation, filters out common stop words, and applies stemming to reduce words to their root form.
-2.  **Vectorization**: The processed lyrics are converted into a numerical matrix using the **TF-IDF (Term Frequency-Inverse Document Frequency)** vectorizer. This method assigns a numerical weight to each word, reflecting its importance in a song's lyrics.
-3.  **Similarity Calculation**: The similarity between each song is calculated using **Cosine Similarity**, a metric that measures the cosine of the angle between two TF-IDF vectors.
-4.  **Recommendation Logic**: The system takes a song as input, finds its most similar songs from the similarity matrix, and returns the top-N recommendations.
+1. **Data Preprocessing**: Lyrical content is cleaned and standardized using a custom function that removes punctuation, filters out common stop words, and applies stemming to reduce words to their root form.
+2. **Vectorization**: The processed lyrics are converted into a numerical matrix using the **TF-IDF (Term Frequency-Inverse Document Frequency)** vectorizer. This method assigns a numerical weight to each word, reflecting its importance in a song's lyrics.
+3. **Similarity Calculation**: The similarity between each song is calculated using **Cosine Similarity**, a metric that measures the cosine of the angle between two TF-IDF vectors.
+4. **Recommendation Logic**: The system takes a song as input, finds its most similar songs from the similarity matrix, and returns the top-N recommendations.
 
 ## File Structure
 
@@ -25,7 +25,11 @@ This project follows a standard content-based filtering pipeline.
 
 music_recommender_engine/
 ├── music_recommender_analysis.ipynb # Main project notebook
-├── requirements.txt # Requirements to install
+├── recommender.py # Standalone Python script
+├── outputs/
+│   ├── demo.png # Notebook demo output
+│   └── demo_2.png # Script demo output
+├── requirements.txt # Project dependencies
 └── README.md # Project documentation
 
 ```
@@ -48,12 +52,28 @@ nltk.download('punkt')
 
 ## Usage
 
-To run the project, navigate to the music_recommender_engine directory and open the terminal.
+This project can be run in two ways:
 
-```bash
-pip install -r requirements.txt
-jupyter notebook music_recommender_analysis.ipynb
-```
+1.  **Using the Jupyter Notebook:** Navigate to the `music_recommender_engine` directory and open the notebook to see the step-by-step process.
+    ```bash
+    jupyter notebook music_recommender_analysis.ipynb
+    ```
+
+2.  **Using the Standalone Script:** You can also run the final recommendation engine directly from the terminal.
+    ```bash
+    python recommender.py
+    ```
+
+
+## Demo 
+
+output of the main function in jupyter notebook :
+
+![demo.png](.\outputs\demo.png)
+
+output of recommender.py :
+
+![demo_2.png](.\outputs\demo_2.png)
 
 ## Acknowledgements
 
