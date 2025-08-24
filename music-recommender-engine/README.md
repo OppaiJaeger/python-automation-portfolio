@@ -69,11 +69,11 @@ This project can be run in two ways:
 
 output of the main function in jupyter notebook :
 
-![demo.png](.\outputs\demo.png)
+![demo.png](https://github.com/OppaiJaeger/python-automation-portfolio/blob/main/music-recommender-engine/outputs/demo.png)
 
 output of recommender.py :
 
-![demo_2.png](.\outputs\demo_2.png)
+![demo_2.png](https://github.com/OppaiJaeger/python-automation-portfolio/blob/main/music-recommender-engine/outputs/demo_2.png)
 
 ## Acknowledgements
 
